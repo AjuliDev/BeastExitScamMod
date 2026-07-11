@@ -1,0 +1,3 @@
+displayName = Mr.Beast Exit Scam Meme Mod
+author = AjuliDev & Eggsbenedict624 & zoey_ink
+version = 1.0

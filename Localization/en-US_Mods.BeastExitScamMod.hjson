@@ -1,0 +1,36 @@
+Items: {
+	BeastPhone: {
+		DisplayName: Beast Phone
+		Tooltip: ""
+	}
+}
+
+Configs: {
+	Config: {
+		DisplayName: Config
+
+		Difficulty: {
+			Label: Difficulty
+			Tooltip: ""
+		}
+	}
+
+	EventDifficulty: {
+		Tooltip: ""
+
+		Easy: {
+			Label: Easy
+			Tooltip: ""
+		}
+
+		Medium: {
+			Label: Medium
+			Tooltip: ""
+		}
+
+		Hard: {
+			Label: Hard
+			Tooltip: ""
+		}
+	}
+}
