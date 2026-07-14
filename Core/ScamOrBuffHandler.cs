@@ -1,5 +1,6 @@
 ﻿using BeastScam.Core;
 using Microsoft.Xna.Framework;
+using ReLogic.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -15,21 +16,6 @@ namespace BeastExitScamMod.Core
 {
 	internal class ScamOrBuffHandler : ModSystem
 	{
-		public void DisplayMessage(bool result, int playerID)
-		{
-			if (Main.netMode == NetmodeID.MultiplayerClient)
-			{
-				return;
-			}
-			if (result)
-			{
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral($"<Mr. Beast> {Main.player[playerID].name} has passed the ultimate challenge!"), Color.LimeGreen);
-			}
-			else
-			{
-				ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral($"<{Main.player[playerID].name}> I fell for the scam..."), Color.Red);
-			}
-		}
 		public void PlayResultSound(bool result)
 		{
 			if (Main.netMode == NetmodeID.Server) return;
@@ -132,8 +118,32 @@ namespace BeastExitScamMod.Core
 				{
 					if (player == Main.player[targetPlayerID])
 					{
-						player.AddBuff(selectedRandomBuffID, GetRandomBuffTime(1, 60 * 5));
+						if (Main.netMode == NetmodeID.Server)
+						{
+							ModPacket newPacket = ModContent.GetInstance<BeastExitScamMod>().GetPacket();
+							newPacket.Write((byte)PacketHandler.PacketType.SyncPlayerChanges);
+							newPacket.Write((byte)PlayerHandler.TransactionType.PlayerBuff);
+							newPacket.Write((int)targetPlayerID);
+							newPacket.Write((int)GetRandomBuffTime(1, 60 * 5));
+							newPacket.Write((int)selectedRandomBuffID);
+							newPacket.Send(-1, -1);
+						}
+						else if (Main.netMode == NetmodeID.SinglePlayer)
+						{
+							Main.player[targetPlayerID].AddBuff(selectedRandomBuffID, GetRandomBuffTime(1, 60 * 5));
+						}
 						// message here
+						MessagingHandler.NetworkAnnouncement(MessagingHandler.MessageType.ReceivedGoodBuff,
+							selectedRandomBuffID,
+							chosenBuffIDPool == TierOneBuffs ? MessagingHandler.Tiers.TierOne :
+							chosenBuffIDPool == TierTwoBuffs ? MessagingHandler.Tiers.TierTwo :
+							chosenBuffIDPool == TierThreeBuffs ? MessagingHandler.Tiers.TierThree : MessagingHandler.Tiers.TierOne,
+							targetPlayerID,
+							true);
+						//if (Main.netMode == NetmodeID.Server)
+						//{
+						//	NetMessage.SendData(MessageID.PlayerBuffs, -1, -1, null, targetPlayerID);
+						//}
 					}
 				}
 			}
@@ -145,8 +155,31 @@ namespace BeastExitScamMod.Core
 				{
 					if (player == Main.player[targetPlayerID])
 					{
-						player.AddBuff(randomBuffID, GetRandomBuffTime(1, 60 * 5));
+						//Main.player[targetPlayerID].AddBuff(randomBuffID, GetRandomBuffTime(1, 60 * 5));
 						// message here
+						MessagingHandler.NetworkAnnouncement(MessagingHandler.MessageType.ReceivedGoodBuff,
+							randomBuffID,
+							MessagingHandler.Tiers.TierOne,
+							targetPlayerID,
+							true);
+						//if (Main.netMode == NetmodeID.Server)
+						//{
+						//	NetMessage.SendData(MessageID.PlayerBuffs, -1, -1, null, targetPlayerID);
+						//}
+						if (Main.netMode == NetmodeID.Server)
+						{
+							ModPacket newPacket = ModContent.GetInstance<BeastExitScamMod>().GetPacket();
+							newPacket.Write((byte)PacketHandler.PacketType.SyncPlayerChanges);
+							newPacket.Write((byte)PlayerHandler.TransactionType.PlayerBuff);
+							newPacket.Write((int)targetPlayerID);
+							newPacket.Write((int)GetRandomBuffTime(1, 60 * 5));
+							newPacket.Write((int)randomBuffID);
+							newPacket.Send(-1, -1);
+						}
+						else if (Main.netMode == NetmodeID.SinglePlayer)
+						{
+							Main.player[targetPlayerID].AddBuff(randomBuffID, GetRandomBuffTime(1, 60 * 5));
+						}
 					}
 				}
 			}
@@ -212,8 +245,33 @@ namespace BeastExitScamMod.Core
 				{
 					if (player == Main.player[targetPlayerID])
 					{
-						player.AddBuff(selectedRandomBuffID, GetRandomBuffTime(1, 30));
+						if (Main.netMode == NetmodeID.Server)
+						{
+							ModPacket newPacket = ModContent.GetInstance<BeastExitScamMod>().GetPacket();
+							newPacket.Write((byte)PacketHandler.PacketType.SyncPlayerChanges);
+							newPacket.Write((byte)PlayerHandler.TransactionType.PlayerBuff);
+							newPacket.Write((int)targetPlayerID);
+							newPacket.Write((int)GetRandomBuffTime(1, 30));
+							newPacket.Write((int)selectedRandomBuffID);
+							newPacket.Send(-1, -1);
+						}
+						else if (Main.netMode == NetmodeID.SinglePlayer)
+						{
+							Main.player[targetPlayerID].AddBuff(selectedRandomBuffID, GetRandomBuffTime(1, 30));
+						}
+						//Main.player[targetPlayerID].AddBuff(selectedRandomBuffID, GetRandomBuffTime(1, 30));
 						// message here
+						MessagingHandler.NetworkAnnouncement(MessagingHandler.MessageType.ReceivedBadBuff,
+							selectedRandomBuffID,
+							chosenBuffIDPool == TierOneDebuff ? MessagingHandler.Tiers.TierOne :
+							chosenBuffIDPool == TierTwoDebuff ? MessagingHandler.Tiers.TierTwo :
+							chosenBuffIDPool == TierThreeDebuff ? MessagingHandler.Tiers.TierThree : MessagingHandler.Tiers.TierOne,
+							targetPlayerID,
+							true);
+						//if (Main.netMode == NetmodeID.Server)
+						//{
+						//	NetMessage.SendData(MessageID.PlayerBuffs, -1, -1, null, targetPlayerID);
+						//}
 					}
 				}
 			}
@@ -225,8 +283,31 @@ namespace BeastExitScamMod.Core
 				{
 					if (player == Main.player[targetPlayerID])
 					{
-						player.AddBuff(randomBuffID, GetRandomBuffTime(1, 30));
+						if (Main.netMode == NetmodeID.Server)
+						{
+							ModPacket newPacket = ModContent.GetInstance<BeastExitScamMod>().GetPacket();
+							newPacket.Write((byte)PacketHandler.PacketType.SyncPlayerChanges);
+							newPacket.Write((byte)PlayerHandler.TransactionType.PlayerBuff);
+							newPacket.Write((int)targetPlayerID);
+							newPacket.Write((int)GetRandomBuffTime(1, 30));
+							newPacket.Write((int)randomBuffID);
+							newPacket.Send(-1, -1);
+						}
+						else if (Main.netMode == NetmodeID.SinglePlayer)
+						{
+							Main.player[targetPlayerID].AddBuff(randomBuffID, GetRandomBuffTime(1, 30));
+						}
+						//Main.player[targetPlayerID].AddBuff(randomBuffID, GetRandomBuffTime(1, 30));
 						// message here
+						MessagingHandler.NetworkAnnouncement(MessagingHandler.MessageType.ReceivedBadBuff,
+							randomBuffID,
+							MessagingHandler.Tiers.TierOne,
+							targetPlayerID,
+							true);
+						//if (Main.netMode == NetmodeID.Server)
+						//{
+						//	NetMessage.SendData(MessageID.PlayerBuffs, -1, -1, null, targetPlayerID);
+						//}
 					}
 				}
 			}
@@ -241,7 +322,6 @@ namespace BeastExitScamMod.Core
 				ItemID.ReflectiveCopperDye,
 				ItemID.BorealWood,
 				ItemID.PalmWood,
-				ItemID.BorealWood,
 				ItemID.IronBar,
 				ItemID.LeadBar,
 				ItemID.CopperBar,
@@ -465,8 +545,18 @@ namespace BeastExitScamMod.Core
 				{
 					if (player == Main.player[targetPlayerID])
 					{
-						player.QuickSpawnItem(player.GetSource_FromThis(), selectedRandomItemID, Main.rand.Next(1, 64));
+						bool isStackable = ContentSamples.ItemsByType[selectedRandomItemID].maxStack > 1;
+						int amountOfThisItem = isStackable == true ? Main.rand.Next(1, 64) : 1;
+						player.QuickSpawnItem(player.GetSource_FromThis(), selectedRandomItemID, amountOfThisItem); // this spawns something in world, auto synced
 						// message here
+						MessagingHandler.NetworkAnnouncement(MessagingHandler.MessageType.WonAnItem,
+							selectedRandomItemID,
+							chosenItemIDPool == TierOneItems ? MessagingHandler.Tiers.TierOne :
+							chosenItemIDPool == TierTwoItems ? MessagingHandler.Tiers.TierTwo :
+							chosenItemIDPool == TierThreeItems ? MessagingHandler.Tiers.TierThree :
+							chosenItemIDPool == TierFourItems ? MessagingHandler.Tiers.TierFour : MessagingHandler.Tiers.TierOne,
+							targetPlayerID,
+							false);
 					}
 				}
 			}
@@ -478,11 +568,34 @@ namespace BeastExitScamMod.Core
 				{
 					if (player == Main.player[targetPlayerID])
 					{
-						player.QuickSpawnItem(player.GetSource_FromThis(), randomItemID, Main.rand.Next(1, 64));
+						bool isStackable = ContentSamples.ItemsByType[randomItemID].maxStack > 1;
+						int amountOfThisItem = isStackable == true ? Main.rand.Next(1, 64) : 1;
+						player.QuickSpawnItem(player.GetSource_FromThis(), randomItemID, amountOfThisItem); // this spawns something in world, already in sync
 						// message here
+						MessagingHandler.NetworkAnnouncement(MessagingHandler.MessageType.WonAnItem,
+							randomItemID,
+							MessagingHandler.Tiers.TierOne,
+							targetPlayerID,
+							false);
 					}
 				}
 			}
+		}
+		private static bool CanAfford(Player player, int price)
+		{
+			int total = 0;
+			for (int i = 0; i < 50; i++)
+			{
+				Item item = player.inventory[i];
+				switch (item.type)
+				{
+					case ItemID.CopperCoin: total += item.stack; break;
+					case ItemID.SilverCoin: total += item.stack * 100; break;
+					case ItemID.GoldCoin: total += item.stack * 10000; break;
+					case ItemID.PlatinumCoin: total += item.stack * 1000000; break;
+				}
+			}
+			return total >= price;
 		}
 		public void InflictNegativeReward(int targetPlayerID)
 		{
@@ -490,24 +603,71 @@ namespace BeastExitScamMod.Core
 			{
 				if (player == Main.player[targetPlayerID])
 				{
-					int amountToScam = Item.buyPrice(platinum: Main.rand.Next(0, 1), gold: Main.rand.Next(0, 10), silver: Main.rand.Next(0, 50), copper: Main.rand.Next(0, 25));
-					bool canPlayerAfford = player.BuyItem(amountToScam);
-					if (canPlayerAfford)
+					// Attempt grabbing coins, first grabbing a randomized price represented in copper coins
+					int fakePurchaseAmount = Item.buyPrice(
+						platinum: Main.rand.Next(0, 1),
+						gold: Main.rand.Next(1, 50),
+						silver: Main.rand.Next(1, 50),
+						copper: Main.rand.Next(1, 99)
+						);
+					if (CanAfford(player, fakePurchaseAmount))
 					{
-						// message here
+						if (Main.netMode == NetmodeID.Server)
+						{
+							ModPacket newPacket = ModContent.GetInstance<BeastExitScamMod>().GetPacket();
+							newPacket.Write((byte)PacketHandler.PacketType.SyncPlayerChanges);
+							newPacket.Write((byte)PlayerHandler.TransactionType.PlayerCoinSubtraction);
+							newPacket.Write((int)targetPlayerID);
+							newPacket.Write((int)fakePurchaseAmount);
+							newPacket.Write((int)ItemID.CopperCoin);
+							newPacket.Send(-1, -1);
+						}
+						else if (Main.netMode == NetmodeID.SinglePlayer)
+						{
+							player.BuyItem(fakePurchaseAmount);
+						}
+						MessagingHandler.NetworkAnnouncement(MessagingHandler.MessageType.LostAnItem,
+							ItemID.GoldCoin,
+							MessagingHandler.Tiers.LostItem,
+							targetPlayerID,
+							false);
 					}
 					else
 					{
-						// brokie with no bugatti
+						// If the player cannot afford the coins, try to get the most expensive item
 						Item mostExpensiveItemOrItemStack = player.inventory
 							.Where(item => !item.IsAir)
 							.OrderByDescending(item => item.value * item.stack)
 							.FirstOrDefault();
+						int slotIndex = System.Array.IndexOf(player.inventory, mostExpensiveItemOrItemStack);
 						if (mostExpensiveItemOrItemStack != null)
 						{
-							mostExpensiveItemOrItemStack.TurnToAir();
+							if (Main.netMode == NetmodeID.Server)
+							{
+								ModPacket newPacket = ModContent.GetInstance<BeastExitScamMod>().GetPacket();
+								newPacket.Write((byte)PacketHandler.PacketType.SyncPlayerChanges);
+								newPacket.Write((byte)PlayerHandler.TransactionType.PlayerItemSubtraction);
+								newPacket.Write((int)targetPlayerID);
+								newPacket.Write((int)slotIndex);
+								newPacket.Write((int)mostExpensiveItemOrItemStack.type);
+								newPacket.Send(-1, -1);
+							}
+							else if (Main.netMode == NetmodeID.SinglePlayer)
+							{
+								mostExpensiveItemOrItemStack.TurnToAir();
+								player.inventory[slotIndex].TurnToAir();
+							}
+							MessagingHandler.NetworkAnnouncement(MessagingHandler.MessageType.LostAnItem,
+								mostExpensiveItemOrItemStack.type,
+								MessagingHandler.Tiers.LostItem,
+								targetPlayerID,
+								false);
 						}
-						// message here
+						else
+						{
+							//ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("InflictNegativeReward: inventory empty, falling back to debuff"), Color.White);
+							AddRandomNegativeBuff(targetPlayerID);
+						}
 					}
 				}
 			}
@@ -524,14 +684,14 @@ namespace BeastExitScamMod.Core
 			{
 				return false;
 			}
-			float ratio = (float)closedAds / givenAds;
+			float ratio = MathHelper.Min((float)closedAds / givenAds, 1f); //(float)closedAds / givenAds;
 			float chance = ratio * 0.75f; //capped at 75% success
 			bool result = Main.rand.NextFloat() < chance;
 			return result;
 		}
 		public void HandleServerReward(bool rewardType, int targetPlayerID)
 		{
-			DisplayMessage(rewardType, targetPlayerID);
+			//DisplayMessage(rewardType, targetPlayerID);
 			if (rewardType)
 			{
 				if (Main.rand.NextBool())

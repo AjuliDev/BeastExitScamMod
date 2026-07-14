@@ -1,7 +1,7 @@
 Items: {
 	BeastPhone: {
 		DisplayName: Beast Phone
-		Tooltip: ""
+		Tooltip: An outdated cell phone, a symbol of a tiger is on the back, and the screen has a money management application open.
 	}
 }
 
@@ -11,6 +11,11 @@ Configs: {
 
 		Difficulty: {
 			Label: Difficulty
+			Tooltip: The mod difficulty, which affects the amount of ads that the player receives.
+		}
+
+		MaxTimeWithoutUseUntilScammed: {
+			Label: Max Time Without Use Until Scammed
 			Tooltip: ""
 		}
 	}
@@ -31,6 +36,109 @@ Configs: {
 		Hard: {
 			Label: Hard
 			Tooltip: ""
+		}
+	}
+}
+
+Messages: {
+	Rewards: {
+		LostMoney.DefaultMessage: "{0}, you just got scammed out of {1} sheckles."
+		TooBroke.DefaultMessage: Sorry {0}, but you're so broke that scammers don't have anything to take.
+
+		WonAnItem: {
+			TierOne: {
+				0: <Mr. Beast> Contestant {0} has won and received a tier 1 reward: {1}!!1
+				1: <Beast Mr.> CONGRATULATIONS!!!!! You, {0}, have been RANDOMLY selected to receive {1}! Claim within 10 seconds or it goes to someone else!!!! HURY!!!!
+				2: WINNER WINNER!!!! {1} drop incoming, {0}! Don't tell the other 999,999 subscribers.
+				3: FINAL NOTICE?! You have a pending reward of {1}! Redeem it now, {0}@terraria.beast!
+				4: "{0}, YOUR BANK REWARDS POINTS ARE EXPIRING NOW. AN AUTOMATED REWARD OF {1} HAS BEEN SENT!"
+			}
+
+			TierTwo: {
+				0: ATTENTION {0}! YOU'VE BEEN SELECTED TO RECEIVE A REWARD! {1}!
+				1: Your number was drawn in today's customer appreciation raffle! Tap to redeem your free gift card before the link expires! {1} for {0}
+				2: FREE MONEY!?!? {0} received {1} as part of today's raffle. Join us @ obviousscam.tegiwej0ifj.win
+				3: "{0}, you have unclaimed tax returns: {1}. Please buy a 5$ gift card to receive your 5000$ tax return now!"
+				4: "{0}, you have a NEW PACKAGE waiting at the depot: {1}. Confirm delivery address within 24hrs or it will be RECYCLED!"
+			}
+
+			TierThree: {
+				0: URGENT!!! {0}, our system flagged you for a PREMIUM reward: {1} !!! Do NOT close this message!!
+				1: You have been chosen by the algorithm. {1} is now yours, {0}. This is not a joke. This is not a scam. (real)
+				2: "{0} YOUR ACCOUNT QUALIFIES FOR AN EXCLUSIVE DROP: {1}. VERIFIED PARTNER OFFER"
+				3: Dear valued subscriber {0}, per section 4.2 of our giveaway policy, you are entitled to {1}. Reply YES to confirm.
+				4: "{0}!!! the mods are NOT looking, quick, take {1} before they patch this out!"
+			}
+
+			TierFour: {
+				0: IT'S HAPPENING. {0}, YOU HAVE WON THE GRAND PRIZE: {1}!!!!! SHARE THIS MESSAGE TO 10 SERVERS TO CONFIRM.
+				1: "{0}... the beast HIMSELF has personally selected you... for {1}... this cannot be undone..."
+				2: JACKPOT OF THE CENTURY {0} WINS {1}!!! (SPONSORED BY NOBODY, TOTALLY REAL)
+				3: "{0}, congratulations, you are the 1,000,000th visitor! Claim your price: {1}!"
+				4: SYSTEM: REWARD_GRANT(USER = {0}, ITEM = {1}, VERIFIED = false) - Enjoy your totally legitimate prize
+			}
+		}
+
+		LostAnItem: {
+			LostItem: {
+				0: Aww, tough luck {0}! Your {1} has been... redistributed. To us. Thanks for playing!
+				1: SYSTEM ERROR: {1} repossessed from {0} due to 'terms of service'. Better luck next time!
+				2: Oops! looks like someone ELSE claimed {0}'s {1}. Weird how that keeps happening.
+				3: "{0}, your {1} has been recalled due to 'insufficient loyalty points.' Try subscribing again!"
+				4: Congratulations {0}, you were SO close to winning! You instead lost {1}.
+			}
+		}
+
+		ReceivedGoodBuff: {
+			TierOne: {
+				0: "{0} has been blessed with {1}! Totally real, with no stringz attached!!1"
+				1: The subscriber bonus has been activated for {0}! Enjoy {1}, courtesy of totally real sponsors!
+				2: WOW {0}! YOU UNLOCKED {1}! LIKE AND COMMENT!
+				3: "{0}, our system has granted you {1} as a thank-you gift. Please do not question the system."
+				4: BREAKING: {0} receives {1} in today's totally-not-rigged buff lottery!
+			}
+
+			TierTwo: {
+				0: You've been granted {1}. This is NOT a scam, we promise!
+				1: "{0}, our algorithm has decided you deserve {1}. Trust the algorithm."
+				2: URGENT BLESSING: {0} has received {1}! Do not close this message!
+				3: "{0}, per our giveaway policy section 7.1, you are entitled to {1}. Enjoy, satisfied customer."
+				4: "{0}!! quick, take {1} before the offer runs out!"
+			}
+
+			TierThree: {
+				0: "{0} has been blessed by Cthulhu with {1}. This cannot be undone."
+				1: ULTRA RARE BUFF DROP!!!!1 {0} RECEIVES {1}!!!! SPONSORED BY ABIBAS
+				2: YO, MR. WHITE! THIS STUFF IS INSANE! {0} HAS RECEIVED {1}
+				3: "{0} SHARED THIS MESSAGE WITH 10 OTHER USERS AND RECEIVED {1}."
+				4: "{0}, YOU ARE VISITOR NR. 100! CLAIM YOUR BONUS FREE BUFF HERE! {1}"
+			}
+		}
+
+		ReceivedBadBuff: {
+			TierOne: {
+				0: Congrats {0}. You won {1}. Wait, that's not right....uh, enjoy!1
+				1: RNGesus has spoken: {0} gets {1}
+				2: "{0}, you've been selected for our mystery debuff! {1}. Maybe read the fine print next time?"
+				3: SYSTEM ERROR: Intended reward LAST PRISM was lost during shipping. Please take this compensation of {1}, {0}.
+				4: Tung Tung Tung Sa--hh shi... You just got debuffed! {0} receives a mighty {1}.
+			}
+
+			TierTwo: {
+				0: YOUR ACCOUNT HAS BEEN FLAGGED FOR {1}. CALL US AT 0500-MRBEST FOR ANY COMPLAINTS. RECEIVER: {0}
+				1: Ouch, that's a nasty surprise, {0}. You just received {1}!
+				2: You have missed [10] sessions at the Church of Innsmouth. {0} was cursed with {1}.
+				3: Cthulhu F'Tahgn! I'a! I'a! {0} has been cursed with {1}
+				4: You have [1] complaint from [Karen]. {0} receives {1}.
+			}
+
+			TierThree: {
+				0: ANTI-JACKPOT OF THE MILLENIA! {0} LANDS A TIER 3 DEBUFF! {1}
+				1: yIKES, I wouldn't want to be in YOUR place! {0} receives {1}
+				2: "{0} has been penalised with {1}. Maybe close the ads this time instead of trying to get free money."
+				3: "{0}, stop talking about Beast. I'm tired of seeing it. Everywhere I look, it's just Balle- I mean Beast. {1}"
+				4: "{0} has been banned from the TModLoader discord server for spamming the exit scam. Additional penalty: {1}."
+			}
 		}
 	}
 }

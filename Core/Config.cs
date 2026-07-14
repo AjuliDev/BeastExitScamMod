@@ -16,5 +16,8 @@ namespace BeastExitScamMod.Core
 		[BackgroundColor(50, 250, 50, 255)]
 		[DefaultValue(EventDifficulty.Easy)]
 		public EventDifficulty Difficulty { get; set; }
+		[DefaultValue(7)]
+		[Range(1, 60)]
+		public int MaxTimeWithoutUseUntilScammed { get; set; }
 	}
 }

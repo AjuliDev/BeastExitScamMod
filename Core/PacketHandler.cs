@@ -3,6 +3,7 @@ using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using XPT.Core.Audio.MP3Sharp.Decoding;
 
 namespace BeastExitScamMod.Core
 {
@@ -13,7 +14,9 @@ namespace BeastExitScamMod.Core
 			RequestExitScam,
 			LaunchExitScam,
 			TransmitClientData,
-			ServerBroadcastResult
+			ServerBroadcastResult,
+			IHaveGambled,
+			SyncPlayerChanges
 		}
 		/// <summary>
 		/// This class handles packets for the entire mod, redirected here from the main mod class.
@@ -62,13 +65,16 @@ namespace BeastExitScamMod.Core
 					{
 						break;
 					}
+					// consume these just in case ig
+					int adsGiven = reader.ReadInt32();
+					int adsClosed = reader.ReadInt32();
 					if (EventHandler.Data[whoAmI] == null)
 					{
 						break;
 						// message here
 					}
-					EventHandler.Data[whoAmI].AdsGiven = reader.ReadInt32();
-					EventHandler.Data[whoAmI].AdsClosed = reader.ReadInt32();
+					EventHandler.Data[whoAmI].AdsGiven = adsGiven;
+					EventHandler.Data[whoAmI].AdsClosed = adsClosed;
 					ScamOrBuffHandler SOBHinstance = ModContent.GetInstance<ScamOrBuffHandler>();
 					bool calculatedRandomizedReward = SOBHinstance.DecideResult(EventHandler.Data[whoAmI].AdsGiven, EventHandler.Data[whoAmI].AdsClosed);
 					ModPacket secondResponsePacket = ModContent.GetInstance<BeastExitScamMod>().GetPacket();
@@ -83,6 +89,21 @@ namespace BeastExitScamMod.Core
 						break;
 					}
 					ModContent.GetInstance<ScamOrBuffHandler>().HandleClientReward(rewardType: reader.ReadBoolean());
+					break;
+				case PacketType.IHaveGambled:
+					if (Main.netMode == NetmodeID.MultiplayerClient)
+					{
+						break;
+					}
+					ModContent.GetInstance<ScamScheduler>().UpdateEntry(whoAmI);
+					break;
+				case PacketType.SyncPlayerChanges:
+					//PlayerHandler.DoPlayerOperations((PlayerHandler.TransactionType)reader.ReadByte(), reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32());
+					PlayerHandler.ScheduleOperation(
+						(PlayerHandler.TransactionType)reader.ReadByte(),
+						reader.ReadInt32(),
+						reader.ReadInt32(),
+						reader.ReadInt32());
 					break;
 				default:
 					ModContent.GetInstance<BeastExitScamMod>().Logger.WarnFormat("BeastExitScamMod: Unknown packet type: {0}", networkPacketType);

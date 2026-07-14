@@ -7,6 +7,7 @@ using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using static BeastExitScamMod.Core.PacketHandler;
 
 namespace BeastExitScamMod.Content
 {
@@ -32,6 +33,9 @@ namespace BeastExitScamMod.Content
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
 				EventHandler.ClientRequestEventStart();
+				ModPacket packet = ModContent.GetInstance<BeastExitScamMod>().GetPacket();
+				packet.Write((byte)PacketType.IHaveGambled); // this is to reset the timings in ScamScheduler btw, if u forget (you will)
+				packet.Send(toClient: Main.myPlayer, -1);
 			}
 			else if (Main.netMode == NetmodeID.SinglePlayer)
 			{
@@ -42,6 +46,7 @@ namespace BeastExitScamMod.Content
 					AdsClosed = 0
 				};
 				ModContent.GetInstance<UIHandler>().StartExitScam();
+				ModContent.GetInstance<ScamScheduler>().UpdateEntry(Main.myPlayer);
 			}
 			useCooldown = ConstantData.C_BEAST_PHONE_COOLDOWN;
 			return true;
@@ -79,6 +84,11 @@ namespace BeastExitScamMod.Content
 					"This post will be deleted one hour after publication. The promotion will run for a few days, so don't miss your chance!")
 				{
 					OverrideColor = new Color(158, 209, 229)
+				});
+				tooltips.Add(new TooltipLine(Mod, "BeastPhoneShiftExtraDisclaimer",
+					"Hold [Shift] to view promotional ad!")
+				{
+					OverrideColor = new Color(252, 57, 3)
 				});
 			}
 			else
