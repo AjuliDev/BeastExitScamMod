@@ -1,1 +1,41 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+[h1]The Mr. Beast Exit Scam Mod[/h1]
+[h3]This is a mod parodying the scam going around discord, where a fake Mr. Beast Xitter profile is shown giving out free USDT crypto.[/h3]
+[i]It also serves to bring awareness to the issue.[/i]
+[hr][/hr][b]By AjuliDev (Programmer), Eggsbenedict624 (Spriter) & zoey_ink (Icon Spriter)[/b]
+[hr][/hr][b]This mod is multiplayer compatible.[/b]
+[hr][/hr]
+[h3]Description[/h3]
+[b]This mod adds an item dubbed the "Beast Phone", which, upon use, triggers ad popups on your screen, that you have to close for a reward, be it a good one or a bad one.[/b]
+
+[h3]Mechanics[/h3]
+[b]The mod features a server-sided config.
+Within this config there are two settings:
+[list][*] [u]Difficulty (Easy, Medium, Hard)[/u]- [i]The difficulty affects the max amount of popups on the screen, as well as the odds of better item and buff drops. (Hard has the best good drops, but also the best bad drops)[/i]
+[*] [u]MaxTimeWithoutUseUntilScammed [/u]- [i]This is the maximum amount of time, in minutes, that the mod will allow you to go without using the BeastPhone. Each time this value's timer runs out, you get automatically scammed of money, and if you're too broke, items, and then negative buffs.[/i]
+[/list]
+
+When using the BeastPhone, it receives a temporary cooldown, and you have to close the popup ad windows that appeared. The more you close, the higher your odds are of getting a good item or buff drop, capping out at 75%! If you don't close any, you're at 0%, so a guaranteed scam. [/b]
+
+[h3]Drop Chances[/h3]
+[b][list][*]Positive Buffs:
+[i]Easy Difficulty[/i][/b] - Tier One (50%), Tier Two (40%), Tier Three (10%)
+[b][i]Medium Difficulty[/i][/b] - Tier One (30%), Tier Two (50%), Tier Three (20%)
+[b][i]Hard Difficulty[/i][/b] - Tier One (30%), Tier Two (30%), Tier Three (40%)
+
+[b][*]Negative Buffs:
+[i]Easy Difficulty[/i][/b] - Tier One (60%), Tier Two (30%), Tier Three (10%)
+[b][i]Medium Difficulty[/i][/b] - Tier One (50%), Tier Two (30%), Tier Three (20%)
+[b][i]Hard Difficulty[/i][/b] - Tier One (30%), Tier Two (30%), Tier Three (40%)
+
+[b][*]Items:
+[i]Easy Difficulty[/i][/b] - Tier One (39%), Tier Two (30%), Tier Three (30%), Tier Four (1%)
+[b][i]Medium Difficulty[/i][/b] - Tier One (28%), Tier Two (40%), Tier Three (30%), Tier Four (2%)
+[b][i]Hard Difficulty[/i][/b] - Tier One (20%), Tier Two (50%), Tier Three (25%), Tier Four (5%)
+[/list]
+
+[h3]Social Links[/h3]
+[url=https://www.ajulisoftware.com/][i][b]AjuliDev's Website "AjuliSoftware"[/b][/url][/i]
+[url=https://discord.gg/Rwk5MbV92r][i][b]AjuliDev's Discord Server "Argon Bright - The Broken Script"[/b][/url][/i]
+[i][b]@ajulidev on Discord[/b][/i]
+[i][b]@eggsbenedict624 on Discord[/b][/i]
+[i][b]@zoey_ink on Discord[/b][/i]

@@ -32,7 +32,7 @@ Configs: {
 
 		MaxTimeWithoutUseUntilScammed: {
 			Label: Max Time Without Use Until Scammed
-			Tooltip: ""
+			Tooltip: "The maximum amount of time, in minutes, without BeastPhone use, until automatic scamming commences."
 		}
 	}
 

@@ -214,16 +214,13 @@ namespace BeastExitScamMod.Core
 				BuffID.Ichor,
 				BuffID.Suffocation,
 				BuffID.Burning,
-				BuffID.Webbed,
-				BuffID.DryadsWardDebuff
+				BuffID.Webbed
 				];
 			int[] TierThreeDebuff =
 				[
 				BuffID.Cursed,
 				BuffID.Frozen,
 				BuffID.Stoned,
-				BuffID.Horrified,
-				BuffID.TheTongue,
 				BuffID.Electrified,
 				BuffID.VortexDebuff,
 				BuffID.WitheredArmor,

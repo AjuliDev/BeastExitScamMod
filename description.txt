@@ -1,1 +1,39 @@
-Modify this file with a description of your mod.
+The Mr. Beast Exit Scam Mod
+This is a mod parodying the scam going around discord, where a fake Mr. Beast Xitter profile is shown giving out free USDT crypto.
+It also serves to bring awareness to the issue.
+This mod is multiplayer-compatible.
+
+Description
+This mod adds an item dubbed the "Beast Phone", which, upon use, triggers ad popups on your screen, that you have to close for a reward, be it a good one or a bad one.
+
+Mechanics
+The mod features a server-sided config.
+Within this config there are two settings:
+
+Difficulty (Easy, Medium, Hard) - The difficulty affects the max amount of popups on the screen, as well as the odds of better item and buff drops. (Hard has the best good drops, but also the best bad drops)
+MaxTimeWithoutUseUntilScammed - This is the maximum amount of time, in minutes, that the mod will allow you to go without using the BeastPhone. Each time this value's timer runs out, you get automatically scammed of money, and if you're too broke, items, and then negative buffs.
+
+
+When using the BeastPhone, it receives a temporary cooldown, and you have to close the popup ad windows that appeared. The more you close, the higher your odds are of getting a good item or buff drop, capping out at 75%! If you don't close any, you're at 0%, so a guaranteed scam. 
+
+Drop Chances
+
+Positive Buffs:
+Easy Difficulty - Tier One (50%), Tier Two (40%), Tier Three (10%)
+Medium Difficulty - Tier One (30%), Tier Two (50%), Tier Three (20%)
+Hard Difficulty - Tier One (30%), Tier Two (30%), Tier Three (40%)
+
+Negative Buffs:
+Easy Difficulty - Tier One (60%), Tier Two (30%), Tier Three (10%)
+Medium Difficulty - Tier One (50%), Tier Two (30%), Tier Three (20%)
+Hard Difficulty - Tier One (30%), Tier Two (30%), Tier Three (40%)
+
+Items:
+Easy Difficulty - Tier One (39%), Tier Two (30%), Tier Three (30%), Tier Four (1%)
+Medium Difficulty - Tier One (28%), Tier Two (40%), Tier Three (30%), Tier Four (2%)
+Hard Difficulty - Tier One (20%), Tier Two (50%), Tier Three (25%), Tier Four (5%)
+
+By AjuliDev (Programmer), Eggsbenedict624 (Spriter) & zoey_ink (Icon Spriter)
+@ajulidev on Discord
+@eggsbenedict624 on Discord
+@zoey_ink on Discord 
