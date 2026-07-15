@@ -1,4 +1,4 @@
-# License — BeastExitScamMod
+# BeastExitScamMod
 
 All source code, visual assets and audio assets in this repository are proprietary to AjuliDev (Programmer), Eggsbenedict624 (Spriter), zoey_ink (Icon Spriter) and are
 protected by applicable copyright law. All rights reserved.
@@ -12,9 +12,9 @@ interest in this intellectual property except as explicitly stated below.
   as a reference when developing your own original Terraria mods.
 - Any code adapted from this repository into another project must credit
   "Mr. Beast Exit Scam Meme Mod" clearly in that project's credits or README.
-- Direct feature clones — i.e., reimplementing this mod's signature mechanics,
+- Direct feature clones - i.e., reimplementing this mod's signature mechanics,
   systems, or content in a way that substantially replicates them for release
-  as a separate mod — are not permitted without prior written permission.
+  as a separate mod - are not permitted without prior written permission.
 - This mod (in whole or in part, compiled or as source) may not be
   redistributed. The Steam Workshop is
   the only officially sanctioned distribution point.
