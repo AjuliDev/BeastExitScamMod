@@ -1,22 +1,41 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BeastExitScamMod.Content;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using static XPT.Core.Audio.MP3Sharp.Decoding.Decoder;
 
 namespace BeastExitScamMod.Core
 {
 	internal class PlayerHandler : ModPlayer // Cut loose endz
 	{
+		public bool HasReceivedStarterItem = false;
 		public static Dictionary<int, List<(TransactionType, int, int)>> Scheduler = new();
 		public enum TransactionType
 		{
 			PlayerItemSubtraction = 1,
 			PlayerBuff = 2,
 			PlayerCoinSubtraction = 3
+		}
+		public override void SaveData(TagCompound tag)
+		{
+			tag["HasReceivedStarterItem"] = HasReceivedStarterItem;
+		}
+		public override void LoadData(TagCompound tag)
+		{
+			HasReceivedStarterItem = tag.GetBool("HasReceivedStarterItem");
+		}
+		public override void OnEnterWorld()
+		{
+			if (!HasReceivedStarterItem)
+			{
+				Player.QuickSpawnItem(Player.GetSource_Misc("BeastPhoneGrant"), ModContent.ItemType<BeastPhone>());
+				HasReceivedStarterItem = true;
+			}
 		}
 		public override void PlayerDisconnect()
 		{

@@ -2,6 +2,22 @@ Items: {
 	BeastPhone: {
 		DisplayName: Beast Phone
 		Tooltip: An outdated cell phone, a symbol of a tiger is on the back, and the screen has a money management application open.
+		ShiftLines:
+			'''
+			I'm excited to announce the launch of my very own crypto casino! To celebrate, I'm giving away $2,500 to everyone who registers - and you can withdraw the bonus instantly.
+
+			How to claim your reward:
+			1. Go to the TModLoader discord server.
+			2. Start spamming this
+			3. Get banned
+			4. ???
+			5. Receive your $2,500 bonus
+
+			This post will be deleted one hour after publication. The promotion will run for a few days, so don't miss your chance!
+			'''
+		ShiftExtraDisclaimer: (F.Y.I. This is not an actual promotional ad. Use this item every now and then or get automatically scammed.)
+		PreShift: Hold [Shift] to view promotional ad!
+		CooldownPreShift: You'll be able to use this item again in {0}!
 	}
 }
 

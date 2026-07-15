@@ -72,36 +72,27 @@ namespace BeastExitScamMod.Content
 			if (holdingShift)
 			{
 				tooltips.Add(new TooltipLine(Mod, "BeastPhoneShiftLines",
-					"I'm excited to announce the launch of my very own crypto casino! To celebrate, I'm giving away $2,500 to everyone who registers - and you can withdraw the bonus instantly.\n" +
-					"\n" +
-					"How to claim your reward:\n" +
-					"1. Go to the TModLoader discord server.\n" +
-					"2. Start spamming this\n" +
-					"3. Get banned\n" +
-					"4. ???\n" +
-					"5. Receive your $2,500 bonus\n" +
-					"\n" +
-					"This post will be deleted one hour after publication. The promotion will run for a few days, so don't miss your chance!")
+					Language.GetTextValue("Mods.BeastExitScamMod.Items.BeastPhone.ShiftLines"))
 				{
 					OverrideColor = new Color(158, 209, 229)
 				});
 				tooltips.Add(new TooltipLine(Mod, "BeastPhoneShiftExtraDisclaimer",
-					"Hold [Shift] to view promotional ad!")
+					Language.GetTextValue("Mods.BeastExitScamMod.Items.BeastPhone.ShiftExtraDisclaimer"))
 				{
-					OverrideColor = new Color(252, 57, 3)
+					OverrideColor = new Color(255, 255, 0)
 				});
 			}
 			else
 			{
 				tooltips.Add(new TooltipLine(Mod, "BeastPhonePreShift",
-					"Hold [Shift] to view promotional ad!")
+					Language.GetTextValue("Mods.BeastExitScamMod.Items.BeastPhone.PreShift"))
 				{
 					OverrideColor = new Color(252, 57, 3)
 				});
 				if (useCooldown > 0)
 				{
 					tooltips.Add(new TooltipLine(Mod, "BeastPhoneCooldownPreShift",
-						$"You'll be able to use this item again in {System.MathF.Ceiling(useCooldown / 60)}!")
+					Language.GetTextValue("Mods.BeastExitScamMod.Items.BeastPhone.CooldownPreShift", System.MathF.Ceiling(useCooldown / 60)))
 					{
 						OverrideColor = new Color(255, 253, 109)
 					});
