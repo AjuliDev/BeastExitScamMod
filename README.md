@@ -1,4 +1,38 @@
-# BeastExitScamMod
+# License — BeastExitScamMod
 
-This mod's code is licensed under AGPL3, however, direct feature clones are **strictly forbidden**. <br/>
-All other non-code assets (sprites, sounds) are strictly **ARR** (ALL RIGHTS RESERVED)
+All source code, visual assets and audio assets in this repository are proprietary to AjuliDev (Programmer), Eggsbenedict624 (Spriter), zoey_ink (Icon Spriter) and are
+protected by applicable copyright law. All rights reserved.
+
+Nothing in this repository grants any license, permission, or ownership
+interest in this intellectual property except as explicitly stated below.
+
+## Permitted Uses
+
+- You may view and read the source code for personal learning purposes and
+  as a reference when developing your own original Terraria mods.
+- Any code adapted from this repository into another project must credit
+  "Mr. Beast Exit Scam Meme Mod" clearly in that project's credits or README.
+- Direct feature clones — i.e., reimplementing this mod's signature mechanics,
+  systems, or content in a way that substantially replicates them for release
+  as a separate mod — are not permitted without prior written permission.
+- This mod (in whole or in part, compiled or as source) may not be
+  redistributed. The Steam Workshop is
+  the only officially sanctioned distribution point.
+
+## Assets
+
+All sprites, sounds, music, and other non-code assets are strictly
+All Rights Reserved. No permission is granted to reuse, modify, or
+redistribute them under any circumstance without explicit written consent.
+
+## Contributions
+
+By submitting a pull request or other contribution to this repository, you
+agree that:
+1. You created the contribution yourself or have sufficient rights to submit it.
+2. You grant AjuliDev, Eggsbenedict624 & zoey_ink a perpetual, worldwide, royalty-free license to use,
+   modify, and distribute your contribution as part of this project.
+3. You will be credited for your contribution unless you request otherwise.
+
+Contributions do not obligate the project owner to merge, retain, or
+publicly credit any specific submission.
